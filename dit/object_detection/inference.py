@@ -59,12 +59,13 @@ def main():
     img = cv2.imread(args.image_path)
 
     md = MetadataCatalog.get(cfg.DATASETS.TEST[0])
-    if cfg.DATASETS.TEST[0]=='icdar2019_test':
-        md.set(thing_classes=["table"])
-    else:
-        md.set(thing_classes=["text","title","list","table","figure"])
+    md.set(thing_classes=["text","title","list","table","figure"])
 
     output = predictor(img)["instances"]
+
+    # filter data by confidence
+    output = output[output.scores > 0.3]
+
     v = Visualizer(img[:, :, ::-1],
                     md,
                     scale=1.0,
@@ -72,8 +73,20 @@ def main():
     result = v.draw_instance_predictions(output.to("cpu"))
     result_image = result.get_image()[:, :, ::-1]
 
-    # step 6: save
     cv2.imwrite(args.output_file_name, result_image)
+
+    for id, clas in enumerate(["text","title","list","table","figure"]):
+        local_output = output[output.pred_classes == id]
+
+        v = Visualizer(img[:, :, ::-1],
+                        md,
+                        scale=1.0,
+                        instance_mode=ColorMode.SEGMENTATION)
+        result = v.draw_instance_predictions(local_output.to("cpu"))
+        result_image = result.get_image()[:, :, ::-1]
+
+        # step 6: save
+        cv2.imwrite("{}{}".format(clas, args.output_file_name), result_image)
 
 if __name__ == '__main__':
     main()
