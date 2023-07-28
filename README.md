@@ -1,12 +1,12 @@
 <!--# Large-scale Self-supervised Pre-training Across Tasks, Languages, and Modalities-->
-## [aka.ms/nlpagi](https://aka.ms/nlpagi)
+## [aka.ms/GeneralAI](https://aka.ms/GeneralAI)
 # Hiring
-We are hiring at all levels (including FTE researchers and interns)! If you are interested in working with us on Foundation Models (aka large-scale pre-trained models) and AGI, NLP, MT, Speech, Document AI and Multimodal AI, please send your resume to <a href="mailto:fuwei@microsoft.com" class="x-hidden-focus">fuwei@microsoft.com</a>.
+We are hiring at all levels (including FTE researchers and interns)! If you are interested in working with us on Foundation Models (aka large-scale pre-trained models) and General AI, NLP, MT, Speech, Document AI and Multimodal AI, please send your resume to <a href="mailto:fuwei@microsoft.com" class="x-hidden-focus">fuwei@microsoft.com</a>.
 
-## AGI Fundamentals
+# Foundation Architecture
 ### TorchScale - Transformers at (any) Scale ([repo](https://github.com/microsoft/torchscale))
 
-Fundamental research to improve modeling generality and capability, as well as training stability and efficiency for Transformers at any scale.
+Fundamental research to develop new architectures for foundation models and AI, focusing on modeling generality and capability, as well as training stability and efficiency.
 
 > Stability - [**DeepNet**](https://github.com/microsoft/unilm/tree/master/deepnet): scaling Transformers to 1,000 Layers and beyond
 
@@ -16,15 +16,22 @@ Fundamental research to improve modeling generality and capability, as well as t
 
 > Efficiency & Transferability - [**X-MoE**](https://github.com/microsoft/unilm/tree/master/xmoe): scalable & finetunable sparse Mixture-of-Experts (MoE)
 
-## Foundation Models
+### Revolutionizing Transformers for (M)LLMs and AI
+
+> [**RetNet**](https://arxiv.org/abs/2307.08621): Retentive Network: A Successor to Transformer for Large Language Models
+
+> [**LongNet**](https://arxiv.org/abs/2307.02486): Scaling Transformers to 1,000,000,000 Tokens
+
+# Foundation Models
 
 ### General-purpose Foundation Model
-> [**MetaLM**](https://github.com/microsoft/unilm/tree/master/metalm): **Language Models are General-Purpose Interfaces**
 
-
-### LLM / MLLM (Multimodal LLM)
 > [**Kosmos-1**](https://arxiv.org/abs/2302.14045): **A Multimodal Large Language Model (MLLM)**
 
+> [**Kosmos-2**](https://github.com/microsoft/unilm/tree/master/kosmos-2): **Grounding Multimodal Large Language Models to the World**
+
+### LLM / MLLM (Multimodal LLM)
+> [**MetaLM**](https://github.com/microsoft/unilm/tree/master/metalm): **Language Models are General-Purpose Interfaces**
 
 **The Big Convergence** - Large-scale self-supervised pre-training across ```tasks``` (predictive and generative), ```languages``` (100+ languages), and ```modalities``` (language, image, audio, layout/format + language, vision + language, audio + language, etc.)
 
@@ -47,10 +54,14 @@ Fundamental research to improve modeling generality and capability, as well as t
 
 > [**E5**](https://github.com/microsoft/unilm/tree/master/e5) (```NEW```): text embeddings
 
+> [**MiniLLM**](https://arxiv.org/abs/2306.08543) (```NEW```): Knowledge Distillation of Large Language Models
+
 ### Vision
 > [**BEiT**](https://github.com/microsoft/unilm/tree/master/beit)/[**BEiT-2**](https://github.com/microsoft/unilm/tree/master/beit2): generative self-supervised pre-training for vision / BERT Pre-Training of Image Transformers
 
-> [**DiT**](https://github.com/microsoft/unilm/tree/master/dit) (```NEW```): self-supervised pre-training for Document Image Transformers
+> [**DiT**](https://github.com/microsoft/unilm/tree/master/dit): self-supervised pre-training for Document Image Transformers
+
+> [**TextDiffuser**](https://github.com/microsoft/unilm/tree/master/textdiffuser) (```NEW```): Diffusion Models as Text Painters
 
 ### Speech
 > [**WavLM**](https://github.com/microsoft/unilm/tree/master/wavlm): speech pre-training for full stack tasks
@@ -92,9 +103,11 @@ Fundamental research to improve modeling generality and capability, as well as t
 > [**XLM-T**](https://github.com/microsoft/unilm/tree/master/xlmt): multilingual NMT w/ pretrained cross-lingual encoders
 
 ## Links
-### LLMOps - General technology for enabling AI capabilities w/ LLMs and MLLMs ([repo](https://github.com/microsoft/lmops))
+### LLMOps ([repo](https://github.com/microsoft/lmops))
+General technology for enabling AI capabilities w/ LLMs and MLLMs.
 
 ## News
+- [Model Release] May, 2023: [**TextDiffuser**](https://github.com/microsoft/unilm/tree/master/textdiffuser) models and code.
 - [Model Release] March, 2023: [**BEiT-3**](https://github.com/microsoft/unilm/tree/master/beit3) pretrained models and code.
 - March, 2023: [**Kosmos-1**](https://arxiv.org/abs/2302.14045) - a Multimodal Large Language Model (MLLM) that can perceive general modalities, learn in context (i.e., few-shot), and follow instructions (i.e., zero-shot).
 - January, 2023: [**VALL-E**](https://arxiv.org/abs/2301.02111) a language modeling approach for text to speech synthesis (TTS), which achieves state-of-the-art zero-shot TTS performance. See https://aka.ms/valle for demos of our work.
