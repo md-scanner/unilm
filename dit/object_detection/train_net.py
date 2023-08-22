@@ -55,18 +55,18 @@ def setup(args):
 def main(args):
     """
     register publaynet first
-    """
+    
     register_coco_instances(
         "publaynet_samples",
         {},
         "./examples/samples.json",
         "./examples"
     )
-
+    """
     register_coco_instances(
         "custom",
         {},
-        "/work/cvcs_2023_group28/dataset/dataset.json",
+        "/work/cvcs_2023_group28/dataset/dataset3.json",
         "/work/cvcs_2023_group28/dataset"
     )
 

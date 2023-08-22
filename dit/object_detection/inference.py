@@ -59,9 +59,11 @@ def main():
     img = cv2.imread(args.image_path)
 
     md = MetadataCatalog.get(cfg.DATASETS.TEST[0])
-    md.set(thing_classes=["text","title","list","table","figure"])
-
+    md.set(thing_classes=["text","h1","code","ul","figure", "ol", "h2", "h3", "h4", "h5", "h6"])
+    from time import time
+    t = time()
     output = predictor(img)["instances"]
+    print(time()-t)
 
     # filter data by confidence
     output = output[output.scores > 0.3]
@@ -75,7 +77,7 @@ def main():
 
     cv2.imwrite(args.output_file_name, result_image)
 
-    for id, clas in enumerate(["text","title","list","table","figure"]):
+    for id, clas in enumerate(["text","title","code","ul","figure", "ol"]):
         local_output = output[output.pred_classes == id]
 
         v = Visualizer(img[:, :, ::-1],
