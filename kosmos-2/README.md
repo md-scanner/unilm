@@ -1,8 +1,8 @@
 # Kosmos-2: Grounding Multimodal Large Language Models to the World
 [[paper]](https://arxiv.org/abs/2306.14824) [[dataset]](https://huggingface.co/datasets/zzliang/GRIT)
-<!-- [[online demo]](https://aka.ms/kosmos-2-demo) -->
+[[online demo hosted by HuggingFace]](https://huggingface.co/spaces/ydshieh/Kosmos-2)
 
-<!--  and [online demo](https://aka.ms/kosmos-2-demo) -->
+- Aug 2023: We acknowledge [ydshieh](https://huggingface.co/ydshieh) at HuggingFace for [the online demo](https://huggingface.co/spaces/ydshieh/Kosmos-2) and [the HuggingFace's transformers implementation](https://huggingface.co/ydshieh/kosmos-2-patch14-224).
 - June 2023: 🔥 We release the **Kosmos-2: Grounding Multimodal Large Language Models to the World** paper. Checkout the [paper](https://arxiv.org/abs/2306.14824).
 - Feb 2023: [Kosmos-1 (Language Is Not All You Need: Aligning Perception with Language Models)](https://arxiv.org/abs/2302.14045)
 - June 2022: [MetaLM (Language Models are General-Purpose Interfaces)](https://arxiv.org/abs/2206.06336)
@@ -33,13 +33,16 @@
 
 ## Checkpoints
 
+The model can be loaded with [the HuggingFace's transformers library](https://huggingface.co/ydshieh/kosmos-2-patch14-224).
+
 The checkpoint can be downloaded from [here](https://conversationhub.blob.core.windows.net/beit-share-public/kosmos-2/kosmos-2.pt?sv=2021-10-04&st=2023-06-08T11%3A16%3A02Z&se=2033-06-09T11%3A16%3A00Z&sr=c&sp=r&sig=N4pfCVmSeq4L4tS8QbrFVsX6f6q844eft8xSuXdxU48%3D):
 ```bash
 wget -O kosmos-2.pt "https://conversationhub.blob.core.windows.net/beit-share-public/kosmos-2/kosmos-2.pt?sv=2021-10-04&st=2023-06-08T11%3A16%3A02Z&se=2033-06-09T11%3A16%3A00Z&sr=c&sp=r&sig=N4pfCVmSeq4L4tS8QbrFVsX6f6q844eft8xSuXdxU48%3D"
 ```
+
 ## Setup
 
-1. Download recommended docker image and launch it:
+1. Download the recommended docker image and launch it:
 ```bash
 alias=`whoami | cut -d'.' -f2`; docker run -it --rm --runtime=nvidia --ipc=host --privileged -v /home/${alias}:/home/${alias} nvcr.io/nvidia/pytorch:22.10-py3 bash
 ```
@@ -54,7 +57,11 @@ bash vl_setup_xl.sh
 ``` 
 (Refer to [comment](https://github.com/microsoft/unilm/issues/1204#issuecomment-1639812388) for detailed package info)
 
+Alternatively, you can refer to [this guide](docs/install.md) to set up a conda environment.
+
 ## Demo
+
+We acknowledge [ydshieh](https://huggingface.co/ydshieh) at HuggingFace for implementing [an online demo](https://huggingface.co/spaces/ydshieh/Kosmos-2).
 
 <!-- We host a public demo at [link](https://aka.ms/kosmos-2-demo). -->
 If you would like to host a local Gradio demo, run the following command after [setup](#setup):
@@ -76,7 +83,6 @@ The format of data instance is:
 
 ```python
 {
-  'key': '000373938', 
   'clip_similarity_vitb32': 0.353271484375, 
   'clip_similarity_vitl14': 0.2958984375, 
   'id': 1795296605919, 
@@ -89,7 +95,6 @@ The format of data instance is:
 }
 
 ```
-- `key`: The file name in COYO-700M.
 - `clip_similarity_vitb32`: The cosine similarity between text and image(ViT-B/32) embeddings by [OpenAI CLIP](https://github.com/openai/CLIP), provided by COYO-700M.
 - `clip_similarity_vitl14`: The cosine similarity between text and image(ViT-L/14) embeddings by [OpenAI CLIP](https://github.com/openai/CLIP), provided by COYO-700M.
 - `id`: Unique 64-bit integer ID in COYO-700M.
@@ -120,7 +125,7 @@ We evaluate phrase grounding task on [Flickr30k Entities](https://github.com/Bry
 More results and evaluation code can be found in [evaluation/flickr/README.md](evaluation/flickr_entities/README.md)
 
 ### 2. Referring expression comprehension
-We evaluate referring expression comprehension task on RefCOCO, RefCOCO+ and RefCOCOg under zero-shot setting. We report accuracy metric here.
+We evaluate referring expression comprehension task on RefCOCO, RefCOCO+, and RefCOCOg under zero-shot setting. We report accuracy metric here.
 
 | Model | RefCOCO val | RefCOCO testA| RefCOCO testB | RefCOCO+ val | RefCOCO+ testA| RefCOCO+ testB | RefCOCOg val | RefCOCOg test|
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -129,7 +134,7 @@ We evaluate referring expression comprehension task on RefCOCO, RefCOCO+ and Ref
 More results and evaluation code can be found in [evaluation/refcoco/README.md](evaluation/refcoco/README.md)
 
 ### 3. Referring expression generation
-We evaluate referring expression generation task on RefCOCOg under zero-shot and few-shot settings. We report Meteor and CIDEr metrics here.
+We evaluate the referring expression generation task on RefCOCOg under zero-shot and few-shot settings. We report Meteor and CIDEr metrics here.
 
 | Model | Setting | Meteor | CIDEr |
 | --- | --- | --- | --- |
@@ -140,7 +145,7 @@ We evaluate referring expression generation task on RefCOCOg under zero-shot and
 We will release the evaluation code in [here](evaluation/).
 
 ### 4. Image captioning
-We evaluate image captioning task on Flickr30K Karpathy split test set under zero-shot setting. We report CIDEr metric here.
+We evaluate the image captioning task on Flickr30K Karpathy split test set under the zero-shot setting. We report the CIDEr metric here.
 
 | Model | CIDEr on Flickr30K | 
 | --- | --- |
@@ -152,7 +157,7 @@ We evaluate image captioning task on Flickr30K Karpathy split test set under zer
 We will release the evaluation code in [here](evaluation/).
 
 ### 5. Visual question answering
-We evaluate visual question answering task on the test-dev set of VQAv2 under zero-shot setting. We report VQA scores obtained from VQAv2 evaluation server.
+We evaluate the visual question-answering task on the test-dev set of VQAv2 under the zero-shot setting. We report VQA scores obtained from the VQAv2 evaluation server.
 
 | Model | Accuracy on VQAv2 | 
 | --- | --- |
@@ -166,6 +171,16 @@ We will release the evaluation code in [here](evaluation/).
 ## Training
 
 ### Preparing dataset
+
+#### GrIT
+After downloading the data from [huggingface](https://huggingface.co/datasets/zzliang/GRIT) using img2dataset, you will obtain some tar files. After decompressing them, you can get the images and corresponding JSON files. Then, modify the file path in [prepare_grit.py](data/prepare_grit.py) and run this file to get the corresponding tsv files. If a tsv file is too large, you can split it into multiple ones yourself.
+
+After processing all the tar files into tsv files, run [generate_config.py](data/generate_config.py) to get a config file, which stores the paths of the tsv files. In [train.sh](train.sh), change the `--laion-data-dir` to the config directory path.
+
+#### Interleaved data
+Interleaved image-text data also needs to be processed in this way. To be updated.
+
+#### Text data
 To be updated.
 
 ### Train script
@@ -206,7 +221,7 @@ If you find this repository useful, please consider citing our work:
 
 ## Acknowledgement
 
-This repository is built using [torchscale](https://github.com/microsoft/torchscale), [fairseq](https://github.com/facebookresearch/fairseq), [openclip](https://github.com/mlfoundations/open_clip). We also would like to acknowledge the examples provided by [WHOOPS!](https://whoops-benchmark.github.io).
+This repository is built using [torchscale](https://github.com/microsoft/torchscale), [fairseq](https://github.com/facebookresearch/fairseq), [openclip](https://github.com/mlfoundations/open_clip). We also would like to acknowledge the examples provided by [WHOOPS!](https://whoops-benchmark.github.io). We acknowledge [ydshieh](https://huggingface.co/ydshieh) at HuggingFace for [the online demo](https://huggingface.co/spaces/ydshieh/Kosmos-2) and [the HuggingFace's transformers implementation](https://huggingface.co/ydshieh/kosmos-2-patch14-224).
 
 
 ## License

@@ -1,6 +1,6 @@
 # Retentive Network: The Successor to Transformer for Large Language Models
 
-- Code release: [https://github.com/microsoft/torchscale](https://github.com/microsoft/torchscale/commit/bf65397b26469ac9c24d83a9b779b285c1ec640b)
+- Code release: [https://github.com/microsoft/torchscale](https://github.com/microsoft/torchscale)
 - July 2023: release preprint [Retentive Network: A Successor to Transformer for Large Language Models](https://arxiv.org/abs/2307.08621)
 
 <p>
@@ -36,4 +36,24 @@ It takes only several lines of code to create a RetNet model:
 >>> retnet = RetNetDecoder(config)
 
 >>> print(retnet)
+```
+
+## Changelog
+
+- Aug 4, 2023: fix a bug of the chunkwise recurrent representation ([commit](https://github.com/microsoft/torchscale/commit/0b1f113985a0339bc322b0c7df91be0f745cb311))
+- Aug 4, 2023: improve the numerical precision of the recurrent representation as suggested by https://github.com/microsoft/torchscale/issues/47 ([commit](https://github.com/microsoft/torchscale/commit/7f0bf80a7e41e6fe2d3bf1fda570fbbf8ecc13a4))
+- Aug 2, 2023: update eps of LN to 1e-6 ([commit](https://github.com/microsoft/torchscale/commit/2c29de0fb3e5e559181f0fb4854330c5b35961cd))
+
+## Citations
+
+If you find this repository useful, please consider citing our work:
+
+```
+@article{retnet,
+  author={Yutao Sun and Li Dong and Shaohan Huang and Shuming Ma and Yuqing Xia and Jilong Xue and Jianyong Wang and Furu Wei},
+  title     = {Retentive Network: A Successor to {Transformer} for Large Language Models},
+  journal   = {ArXiv},
+  volume    = {abs/2307.08621},
+  year      = {2023}
+}
 ```
