@@ -77,7 +77,7 @@ def main():
 
     cv2.imwrite(args.output_file_name, result_image)
 
-    for id, clas in enumerate(["text","title","code","ul","figure", "ol"]):
+    for id, clas in enumerate(["text","h1","code","ul","figure", "ol", "h2", "h3", "h4", "h5", "h6"]):
         local_output = output[output.pred_classes == id]
 
         v = Visualizer(img[:, :, ::-1],
