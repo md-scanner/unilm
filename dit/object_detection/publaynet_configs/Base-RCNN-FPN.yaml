@@ -38,7 +38,7 @@ MODEL:
     POOLER_RESOLUTION: 14
 DATASETS:
   TRAIN: ("custom",) #("publaynet_samples",) #
-  TEST: ("publaynet_val",)
+  TEST: ("custom_eval",)
 SOLVER:
   LR_SCHEDULER_NAME: "WarmupCosineLR"
   AMP:

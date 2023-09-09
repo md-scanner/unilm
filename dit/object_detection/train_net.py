@@ -66,8 +66,15 @@ def main(args):
     register_coco_instances(
         "custom",
         {},
-        "/work/cvcs_2023_group28/dataset/dataset3.json",
-        "/work/cvcs_2023_group28/dataset"
+        "../../dataset/dataset3.json",
+        "../../dataset"
+    )
+
+    register_coco_instances(
+        "custom_eval",
+        {},
+        "../../lorem-markdownum-dataset/dataset.json",
+        "../../lorem-markdownum-dataset"
     )
 
 
