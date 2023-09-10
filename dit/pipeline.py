@@ -145,6 +145,8 @@ for i in range(output.pred_classes.shape[0]):
         txt+=f'![]({img_path})\n\n'
     elif output.pred_classes[i] == 5:
         for el in out.splitlines():
+            if el.isspace() or el == '':
+                continue
             txt+='1. ' + el+'\n'
         txt+='\n'
     else: # output.pred_classes[i] >= 6
